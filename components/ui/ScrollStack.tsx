@@ -124,9 +124,7 @@ const ScrollStack = ({
       .filter((t): t is {
         card: HTMLDivElement;
         index: number;
-        newTransform: { translateY: number; scale: number; rotation: number; blur: number; };
-        pinStart: number;
-        pinEnd: number;
+        cardTop: number;
       } => t !== null);
 
     // Now perform all calculations
