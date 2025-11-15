@@ -85,7 +85,7 @@ export default function AnimatedNumbers() {
               }}
             >
               <div className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-2" style={{ color: '#111827' }}>
-                <span ref={(el) => (numberRefs.current[index] = el)}>
+                <span ref={el => { numberRefs.current[index] = el }}>
                   0
                 </span>
                 <span>{stat.suffix}</span>
