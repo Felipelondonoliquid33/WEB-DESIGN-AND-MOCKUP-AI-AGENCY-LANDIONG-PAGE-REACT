@@ -172,10 +172,23 @@ const ScrollStack = ({
         pinStart,
         pinEnd
       };
-    }).filter(Boolean);
+    })
+      .filter((t): t is {
+        card: HTMLDivElement;
+        index: number;
+        newTransform: { translateY: number; scale: number; rotation: number; blur: number; };
+        pinStart: number;
+        pinEnd: number;
+      } => t !== null);
 
     // Now apply all transforms in a single batch
-    transforms.forEach(({ card, index: i, newTransform, pinStart, pinEnd }) => {
+    (transforms as Array<{
+      card: HTMLDivElement;
+      index: number;
+      newTransform: { translateY: number; scale: number; rotation: number; blur: number; };
+      pinStart: number;
+      pinEnd: number;
+    }>).forEach(({ card, index: i, newTransform, pinStart, pinEnd }) => {
       const lastTransform = lastTransformsRef.current.get(i);
       const hasChanged =
         !lastTransform ||
