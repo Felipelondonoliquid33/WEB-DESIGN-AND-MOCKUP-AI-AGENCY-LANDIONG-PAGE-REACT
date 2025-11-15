@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Map, Layout, Palette, ArrowRight, CheckCircle2 } from "lucide-react";
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dynamic from "next/dynamic";
@@ -80,21 +80,15 @@ function FeatureItem({
   featureIndex: number; 
   gradient: string;
 }) {
-  const featureRef = useRef<HTMLLIElement>(null);
-  // Combined ref callback to assign both featureRef and inViewRef
-  const setRefs = useCallback((el: HTMLLIElement | null) => {
-    featureRef.current = el;
-    inViewRef(el);
-  }, [inViewRef]);
   const [inViewRef, inView] = useInView({
     threshold: 0.2,
     triggerOnce: false,
   });
 
   useEffect(() => {
-    if (featureRef.current) {
-      const element = featureRef.current;
-      
+    // Use the element from inViewRef if needed
+    const element = document.querySelectorAll('.feature-item')[featureIndex] as HTMLElement | null;
+    if (element) {
       // Set initial state
       gsap.set(element, {
         opacity: 0,
@@ -111,7 +105,7 @@ function FeatureItem({
         ease: "power3.out",
         scrollTrigger: {
           trigger: element,
-          start: "top 85%",
+          start: "top 80%",
           end: "top 50%",
           toggleActions: "play none none reverse",
         },
@@ -126,12 +120,12 @@ function FeatureItem({
         });
       };
     }
-  }, []);
+  }, [featureIndex]);
 
   return (
     <li
-      ref={setRefs}
-      className="group relative flex items-center gap-4 transition-all duration-300"
+      ref={inViewRef}
+      className="feature-item group relative flex items-center gap-4 transition-all duration-300"
       style={{ fontFamily: 'system-ui, -apple-system, "Inter", sans-serif' }}
     >
       {/* Glow effect on hover */}
