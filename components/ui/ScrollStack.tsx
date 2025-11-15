@@ -120,7 +120,21 @@ const ScrollStack = ({
         index: i,
         cardTop: getElementOffset(card)
       };
-    }).filter(Boolean);
+    }) as Array<{
+      card: HTMLDivElement;
+      index: number;
+      newTransform: { translateY: number; scale: number; rotation: number; blur: number; };
+      pinStart: number;
+      pinEnd: number;
+    }>;
+    // Remove any nulls from the array
+    .filter((t): t is {
+      card: HTMLDivElement;
+      index: number;
+      newTransform: { translateY: number; scale: number; rotation: number; blur: number; };
+      pinStart: number;
+      pinEnd: number;
+    } => t !== null);
 
     // Now perform all calculations
     const transforms = cardData.map((data) => {
