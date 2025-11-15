@@ -100,18 +100,22 @@ export default function Model3D({
     setIsMobile(isMobileDevice());
   }, []);
 
+  // Camera position: zoom out more on mobile
+  const cameraPosition = isMobile ? [0, 0, 6] : [0, 0, 3];
+  const mobileClass = isMobile ? 'model3d-mobile' : '';
+
   return (
-    <div className={`w-full h-full ${className}`}>
+    <div className={`w-full h-full ${className} ${mobileClass}`}>
       <Canvas
-        camera={{ position: [0, 0, 3], fov: 50, near: 0.1, far: 100 }}
+        camera={{ position: cameraPosition, fov: isMobile ? 60 : 50, near: 0.1, far: 100 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
         dpr={[1, 2]}
       >
         <Suspense fallback={<Loading />}>
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[5, 5, 5]} intensity={0.8} color="#ffffff" />
-          <directionalLight position={[-5, -5, -5]} intensity={0.4} color="#ffffff" />
+          <ambientLight intensity={isMobile ? 0.6 : 0.8} />
+          <directionalLight position={[5, 5, 5]} intensity={isMobile ? 0.6 : 0.8} color="#ffffff" />
+          <directionalLight position={[-5, -5, -5]} intensity={isMobile ? 0.3 : 0.4} color="#ffffff" />
           <Model modelPath={modelPath} controlsRef={controlsRef} />
           <OrbitControls
             ref={controlsRef}
@@ -119,10 +123,9 @@ export default function Model3D({
             enablePan={!isMobile}
             autoRotate={isMobile}
             enableDamping={true}
-            dampingFactor={0.05}
+            dampingFactor={isMobile ? 0.1 : 0.05}
             enableRotate={!isMobile}
             panSpeed={0.8}
-            // No angle restrictions for freer movement
           />
         </Suspense>
       </Canvas>
