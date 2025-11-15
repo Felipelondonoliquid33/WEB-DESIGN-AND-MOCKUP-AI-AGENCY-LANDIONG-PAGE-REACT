@@ -1,6 +1,11 @@
 "use client";
 
 import React, { Suspense, useRef, useEffect, useState } from "react";
+// Simple mobile detection
+function isMobileDevice() {
+  if (typeof window === 'undefined') return false;
+  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
@@ -89,7 +94,12 @@ export default function Model3D({
   className?: string;
 }) {
   const controlsRef = useRef<any>(null);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(isMobileDevice());
+  }, []);
+
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
@@ -105,12 +115,12 @@ export default function Model3D({
           <Model modelPath={modelPath} controlsRef={controlsRef} />
           <OrbitControls
             ref={controlsRef}
-            enableZoom={true}
-            enablePan={true}
-            autoRotate={false}
+            enableZoom={!isMobile}
+            enablePan={!isMobile}
+            autoRotate={isMobile}
             enableDamping={true}
             dampingFactor={0.05}
-            enableRotate={true}
+            enableRotate={!isMobile}
             panSpeed={0.8}
             // No angle restrictions for freer movement
           />
