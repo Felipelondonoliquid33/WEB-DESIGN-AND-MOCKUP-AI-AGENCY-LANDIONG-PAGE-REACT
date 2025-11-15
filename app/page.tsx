@@ -101,7 +101,6 @@ export default function Home() {
           trigger="click"
           fontSize="calc(2rem + 10px)"
           letterGap="10px"
-          wordGap="24px"
           demoLink="/request-demo"
         />
         <CTA />
