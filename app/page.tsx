@@ -1,4 +1,29 @@
 "use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import GlowInputBar from "@/components/GlowInputBar";
+
+import dynamic from "next/dynamic";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Process from "@/components/Process";
+import ShipFaster from "@/components/ShipFaster";
+import MarqueeMockup from "@/components/MarqueeMockup";
+// import ThreeColumnReveal from "@/components/ThreeColumnReveal";
+import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
+import Testimonials from "@/components/Testimonials";
+import CTA from "@/components/CTA";
+import TrustedBy from "@/components/TrustedBy";
+import FallingText from "@/components/FallingText";
+import InteractiveBorder from "@/components/ui/InteractiveBorder";
+import Squares from "@/components/Squares";
+
+const AnimatedNumbers = dynamic(() => import("@/components/AnimatedNumbers"), {
+  ssr: false,
+});
+
 // Animated connector line component - just vertical line connecting input to features
 function GlowLineConnector() {
   const ref = useRef(null);
@@ -27,29 +52,6 @@ function GlowLineConnector() {
     </div>
   );
 }
-import GlowInputBar from "@/components/GlowInputBar";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-
-import dynamic from "next/dynamic";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import Process from "@/components/Process";
-import ShipFaster from "@/components/ShipFaster";
-import MarqueeMockup from "@/components/MarqueeMockup";
-// import ThreeColumnReveal from "@/components/ThreeColumnReveal";
-import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
-import Testimonials from "@/components/Testimonials";
-import CTA from "@/components/CTA";
-import TrustedBy from "@/components/TrustedBy";
-import FallingText from "@/components/FallingText";
-import InteractiveBorder from "@/components/ui/InteractiveBorder";
-import Squares from "@/components/Squares";
-
-const AnimatedNumbers = dynamic(() => import("@/components/AnimatedNumbers"), {
-  ssr: false,
-});
 
 export default function Home() {
   const handleShuffle = () => {

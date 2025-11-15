@@ -260,22 +260,7 @@ export default function Hero() {
               color: "#1A1A1A",
             }}
           >
-            {/* GSAP Typing Effect */}
-            {typeof window !== 'undefined' && (
-              <>
-                {require('./ui/TextType').default && (
-                  require('./ui/TextType').default({
-                    text: 'We build software that connects, automates, and evolves.',
-                    as: 'span',
-                    typingSpeed: 75,
-                    pauseDuration: 2000,
-                    showCursor: true,
-                    cursorCharacter: '|',
-                    className: 'inline-block',
-                  })
-                )}
-              </>
-            )}
+            We build software that connects, automates, and evolves.
           </motion.h1>
 
           {/* Subheading - Centered, max-width: 680px */}

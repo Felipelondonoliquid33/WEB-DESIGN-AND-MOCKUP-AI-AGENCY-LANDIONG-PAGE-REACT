@@ -40,8 +40,10 @@ const Squares = ({
       numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1;
     };
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+    }
 
     const drawGrid = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -138,7 +140,9 @@ const Squares = ({
     requestRef.current = requestAnimationFrame(updateAnimation);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', resizeCanvas);
+      }
       if (requestRef.current) {
         cancelAnimationFrame(requestRef.current);
       }

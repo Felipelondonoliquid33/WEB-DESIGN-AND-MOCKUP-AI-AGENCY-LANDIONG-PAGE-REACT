@@ -7,6 +7,8 @@ export function useScrollDirection() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     let lastScrollY = window.scrollY;
 
     const updateScrollDirection = () => {

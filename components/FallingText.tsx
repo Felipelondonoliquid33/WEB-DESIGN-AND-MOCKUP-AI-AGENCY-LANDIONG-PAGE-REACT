@@ -160,7 +160,7 @@ const FallingText = ({
         height,
         background: 'transparent',
         wireframes: false,
-        pixelRatio: window.devicePixelRatio || 1
+        pixelRatio: typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1
       }
     });
     renderRef.current = render;
