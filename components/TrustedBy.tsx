@@ -71,7 +71,7 @@ const companies = [
 
 export default function TrustedBy() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const timelineRef = useRef(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
