@@ -125,7 +125,7 @@ function FeatureItem({
 
   return (
     <li
-      ref={(el) => {
+      ref={el => {
         featureRef.current = el;
         inViewRef(el);
       }}
