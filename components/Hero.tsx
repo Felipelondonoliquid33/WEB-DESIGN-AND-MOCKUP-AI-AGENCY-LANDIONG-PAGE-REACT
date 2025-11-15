@@ -261,7 +261,6 @@ export default function Hero() {
             }}
           >
             {/* GSAP Typing Effect */}
-            {/* @ts-expect-error Async Server Component import */}
             {typeof window !== 'undefined' && (
               <>
                 {require('./ui/TextType').default && (
