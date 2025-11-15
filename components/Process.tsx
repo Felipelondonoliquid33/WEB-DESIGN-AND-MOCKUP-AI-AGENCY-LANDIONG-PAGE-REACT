@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Map, Layout, Palette, ArrowRight, CheckCircle2 } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dynamic from "next/dynamic";
@@ -81,6 +81,11 @@ function FeatureItem({
   gradient: string;
 }) {
   const featureRef = useRef<HTMLLIElement>(null);
+  // Combined ref callback to assign both featureRef and inViewRef
+  const setRefs = useCallback((el: HTMLLIElement | null) => {
+    featureRef.current = el;
+    inViewRef(el);
+  }, [inViewRef]);
   const [inViewRef, inView] = useInView({
     threshold: 0.2,
     triggerOnce: false,
@@ -125,10 +130,7 @@ function FeatureItem({
 
   return (
     <li
-      ref={el => {
-        featureRef.current = el;
-        inViewRef(el);
-      }}
+      ref={setRefs}
       className="group relative flex items-center gap-4 transition-all duration-300"
       style={{ fontFamily: 'system-ui, -apple-system, "Inter", sans-serif' }}
     >
