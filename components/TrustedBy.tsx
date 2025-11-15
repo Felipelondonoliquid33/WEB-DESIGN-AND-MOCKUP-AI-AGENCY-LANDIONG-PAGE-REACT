@@ -70,7 +70,7 @@ const companies = [
 ];
 
 export default function TrustedBy() {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef(null);
 
   useEffect(() => {
