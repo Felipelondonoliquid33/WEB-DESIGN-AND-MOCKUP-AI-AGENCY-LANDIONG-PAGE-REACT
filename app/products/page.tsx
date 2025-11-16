@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Button from "@/components/ui/Button";
 import GradientText from "@/components/ui/GradientText";
 import Badge from "@/components/ui/Badge";
+import MacbookScrollDemo from "@/components/macbook-scroll-demo";
 
 export default function ProductsPage() {
   const products = [
@@ -89,6 +90,12 @@ export default function ProductsPage() {
               Use AI as your design ally, not a replacement. Instantly generate Sitemaps, 
               Wireframes and Style Guides for marketing websites—all in minutes
             </p>
+
+            {/* Macbook scroll hero animation */}
+            <div className="relative -mt-4">
+              <MacbookScrollDemo />
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="primary" size="lg" className="!bg-neutral-900 !text-white hover:!bg-neutral-800">
                 Try the Site Builder

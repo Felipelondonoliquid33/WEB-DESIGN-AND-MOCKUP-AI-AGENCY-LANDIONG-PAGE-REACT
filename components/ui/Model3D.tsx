@@ -101,7 +101,7 @@ export default function Model3D({
   }, []);
 
   // Camera position: zoom out more on mobile
-  const cameraPosition = isMobile ? [0, 0, 6] : [0, 0, 3];
+  const cameraPosition: [number, number, number] = isMobile ? [0, 0, 6] : [0, 0, 3];
   const mobileClass = isMobile ? 'model3d-mobile' : '';
 
   return (
