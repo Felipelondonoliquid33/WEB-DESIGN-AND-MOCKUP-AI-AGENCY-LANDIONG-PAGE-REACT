@@ -59,52 +59,52 @@ const LibraryIcon = () => (
 );
 
 const navItems = [
-  { name: "Features", href: "/features" },
-  { name: "Solutions", href: "/solutions" },
-  { name: "Pricing", href: "/pricing" },
+  { name: "Features", href: "/products" },
+  { name: "Solutions", href: "/products" },
+  { name: "Pricing", href: "/products" },
 ];
 
 const productsMenuItems = [
   {
     name: "AI Site Builder",
-    href: "/products/ai-site-builder",
+    href: "/products",
     description: "Generate sitemaps, wireframes & style guides with AI",
-    icon: <SiteBuilderIcon />,
+    icon: <SiteBuilderIcon />, 
     isNew: false,
   },
   {
     name: "Webflow Library",
-    href: "/products/webflow-library", 
+    href: "/products", 
     description: "1,000+ responsive Webflow components",
-    icon: <WebflowIcon />,
+    icon: <WebflowIcon />, 
     isNew: false,
   },
   {
     name: "Figma Library",
-    href: "/products/figma-library",
+    href: "/products",
     description: "Complete Figma component library",
-    icon: <FigmaIcon />,
+    icon: <FigmaIcon />, 
     isNew: false,
   },
   {
     name: "React Library", 
-    href: "/products/react-library",
+    href: "/products",
     description: "React components with Tailwind CSS",
-    icon: <ReactIcon />,
+    icon: <ReactIcon />, 
     isNew: false,
   },
   {
     name: "Chrome Extension",
-    href: "/products/chrome-extension",
+    href: "/products",
     description: "Copy components directly from any website",
-    icon: <ChromeIcon />,
+    icon: <ChromeIcon />, 
     isNew: false,
   },
   {
     name: "Libraries",
-    href: "/products/libraries",
+    href: "/products",
     description: "Browse all component libraries", 
-    icon: <LibraryIcon />,
+    icon: <LibraryIcon />, 
     isNew: false,
   },
 ];
@@ -147,7 +147,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-full max-w-7xl">
         <div className="flex items-center justify-between h-full">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 z-10">
+          <Link href="/products" className="flex items-center space-x-2 z-10">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
