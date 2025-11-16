@@ -59,8 +59,8 @@ const LibraryIcon = () => (
 );
 
 const navItems = [
-  { name: "Features", href: "/products" },
-  { name: "Solutions", href: "/products" },
+  { name: "Features", href: "/" },
+  { name: "Home", href: "/" },
   { name: "Pricing", href: "/products" },
 ];
 
@@ -147,7 +147,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-full max-w-7xl">
         <div className="flex items-center justify-between h-full">
           {/* Logo */}
-          <Link href="/products" className="flex items-center space-x-2 z-10">
+          <Link href="/" className="flex items-center space-x-2 z-10">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
